@@ -13,10 +13,12 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody rig;
 
+    private AudioSource audioSource;
     private void Awake()
     {
         //get the rigidbody component
         rig = GetComponent<Rigidbody>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -100,6 +102,7 @@ public class PlayerController : MonoBehaviour
             //add score
             //destroy coin 
             Destroy(other.gameObject);
+            audioSource.Play();
         }
     }
 

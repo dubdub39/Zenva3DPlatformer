@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -85,6 +86,14 @@ public class PlayerController : MonoBehaviour
         //ForceMode.Impulse creates a behavior similar to hitting a golfball.  As soon as that force
         //is applied, the reaction is explosive and more reactive.  Without ForceMode.Impulse, the
         //object would not move or would need more momentum before moving very slowly
-    }    
-        
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Enemy")
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
+    }
+
 }

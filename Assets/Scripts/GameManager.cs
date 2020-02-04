@@ -5,8 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField]
-    private int score;
+    
+    public int score = 0;
 
     //instance
     public static GameManager instance;
@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
     public void AddScore(int scoreToGive)
     {
         score += scoreToGive;
+        GameUI.instance.UpdateScoreText();
     }
 
     public void LevelEnd()
@@ -50,11 +51,12 @@ public class GameManager : MonoBehaviour
 
     public void WinGame()
     {
-
+        GameUI.instance.SetEndScreen(true);
     }
 
     public void GameOver()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        GameUI.instance.SetEndScreen(false);
+        
     }
 }

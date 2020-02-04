@@ -43,6 +43,8 @@ public class PlayerController : MonoBehaviour
         //Y-axis equals whatever the currently velocity of Y is at any given moment
         dir.y = rig.velocity.y;
 
+        //we can't move forward without this line of code.  the velocity method takes our player's
+        //rigidbody component and uses our user-defined vector3 values to push it forward/backwards
         rig.velocity = dir;
 
         Vector3 facingDir = new Vector3(xInput , 0, zInput);

@@ -94,15 +94,21 @@ public class PlayerController : MonoBehaviour
     {
         if (other.tag == "Enemy")
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            GameManager.instance.GameOver();
+            
         }
 
         else if (other.tag == "Coin")
         {
-            //add score
+            GameManager.instance.AddScore(1);
             //destroy coin 
             Destroy(other.gameObject);
             audioSource.Play();
+        }
+
+        else if (other.tag == "Goal")
+        {
+            GameManager.instance.LevelEnd();
         }
     }
 

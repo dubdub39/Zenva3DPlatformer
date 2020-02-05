@@ -12,6 +12,8 @@ public class GameUI : MonoBehaviour
     [SerializeField]
     private GameObject endScreen;
 
+    public GameObject pauseScreen;
+
     // instance
     public static GameUI instance;
 
@@ -55,6 +57,19 @@ public class GameUI : MonoBehaviour
 
     public void OnMenuButton()
     {
+        if (GameManager.instance.paused)
+            GameManager.instance.TogglePauseGame();
+
         SceneManager.LoadScene(0);
+    }
+
+    public void TogglePauseScreen (bool paused)
+    {
+        pauseScreen.SetActive(paused);
+    }
+
+    public void OnResumeButton()
+    {
+        GameManager.instance.TogglePauseGame();
     }
 }

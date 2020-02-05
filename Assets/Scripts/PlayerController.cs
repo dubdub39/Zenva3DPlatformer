@@ -19,10 +19,17 @@ public class PlayerController : MonoBehaviour
         //get the rigidbody component
         rig = GetComponent<Rigidbody>();
         audioSource = GetComponent<AudioSource>();
+
+        Time.timeScale = 1.0f;
     }
 
     private void Update()
     {
+        //if the game is paused, don't store all of the player movement inputs
+        //until unpaused.
+        if (GameManager.instance.paused)
+            return;
+
         Move();
 
         //Maybe GetButtonDown is similar to GetKeyDown, but is 
